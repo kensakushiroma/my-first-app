@@ -1,13 +1,14 @@
 package controllers;
 
-import models.User;
+import models.Member;
+import models.ThanksCard;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.data.Form;
 import play.mvc.*;
 import views.html.authentication.*;
-
+import java.util.List;
 
 public class Authentication extends Controller {
 
@@ -28,16 +29,18 @@ public class Authentication extends Controller {
         private Boolean authenticate(String username, String password) {
 
             //return (username.equals("gongo") && password.equals("pizza"));
-        	return User.authenticate(username, password);
+        	return Member.authenticate(username, password);
 
         }
     }
 
 
 	//よくわからない
+	public static List<ThanksCard> thanks = ThanksCard.find.all();
     public static Form<Login> loginForm = Form.form(Login.class);
 
     public static Result index() {
+
     	if (session("login") != null) {
            return ok("あなたは既に " + session("login") + "としてログインしています");
         }
@@ -52,7 +55,9 @@ public class Authentication extends Controller {
         } else {
             Login login = form.get();
             session("login", login.username);
-            return ok("ようこそ " + login.username + " さん!!");
+
+            //System.out.println("ようこそ " + login.username + " さん!!");
+            return ok(main.render(thanks));
         }
 
     }
