@@ -8,17 +8,17 @@ import play.db.ebean.Model;
 public class ThanksCard extends Model {
 
 	@Id
-	public Integer ThanksCard_ID;
-	public Integer CardMaker_ID;
-	public String Maker_post;
-	public String Maker_name;
-	public java.sql.Date Transmission_date;
-	public java.sql.Date Help_date;
-	public Integer Helpcategory_ID;
-	public String Help;
-	public String Thanks;
-	public Integer Address_ID;
-	public String Address_post;
-	public String Address_name;
+	public Integer thankscard_id;
+	public Integer cardmaker_id;
+	public String maker_post;
+	public String maker_name;
+	public java.util.Date transmission_date;
+	public java.util.Date help_date;
+	public Integer helpcategory_id;
+	public String help;
+	public String thanks;
+	public Integer address_id;
+	public String address_post;
+	public String address_name;
 
 }

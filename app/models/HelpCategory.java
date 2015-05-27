@@ -8,7 +8,12 @@ import javax.persistence.Id;
 public class HelpCategory extends Model {
 
 	@Id
-	public Integer HelpCategory_ID;
-	public String HelpCategory;
+	public Integer help_id;
+	public String help_name;
+
+    public static Finder<Long,HelpCategory> find = new Finder<Long,HelpCategory>(
+            Long.class, HelpCategory.class
+        );
+
 
 }

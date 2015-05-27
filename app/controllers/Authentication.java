@@ -1,7 +1,8 @@
 package controllers;
 
 import models.Member;
-import models.ThanksCard;
+
+import models.*;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -61,6 +62,12 @@ public class Authentication extends Controller {
         }
 
     }
+
+
+    public static Result main(){
+    	return ok(main.render());
+    }
+
 //ログアウト処理
     public static Result logout() {
         session().clear();

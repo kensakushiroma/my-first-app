@@ -1,10 +1,80 @@
-@(message: String)
+@(postList: List[Post])(memberList: List[Member])(helpList: List[HelpCategory])
 
-@main("Welcome to Play") {
 
-	<form action="@routes.Application.addThanks()" method="post">
-		<input name="CardMaker_ID">
-		<input type="submit">
-	</form>
+<html>
+    <head>
+        <title>感謝カード入力画面</title>
+           </head>
+    <body>
+<form method="get" action="@routes.Authentication.logout()">
+<input type="submit" value="ログアウト" style="background-color:blue;">
+</form>
 
-}
+ <p>■感謝する人</p>
+ 部署：
+ <select name="部署：">
+ @for(u <- postList){
+ <option value=@u.post_id>@u.post_name</option>
+ }
+ </select>
+
+
+氏名：
+ <select name="氏名：">
+  @for(u <- memberList){
+ <option value=@u.Member_ID>@u.Member_name</option>
+ }
+ </select>
+
+
+
+
+
+<!-- テキストボックスに表示する場合 -->
+<br><br>
+<form action="@routes.Application.addThanks()" style="display:inline" method="post">
+日付：<input name="help_date">
+
+<br><br>
+
+ヘルプ項目：
+ <select name="ヘルプ項目：">
+  @for(u <- helpList){
+ <option value=@u.help_id>@u.help_name</option>
+ }
+ </select>
+
+<p>ヘルプ内容</p>
+ <TEXTAREA cols="40" rows="5" maxlength="200"></TEXTAREA>
+
+ <p>感謝の言葉</p>
+
+ <TEXTAREA cols="40" rows="5" maxlength="200"></TEXTAREA>
+
+ <p>■感謝される人</p>
+
+部署：
+ <select name="部署：">
+ @for(u <- postList){
+ <option value=@u.post_id>@u.post_name</option>
+ }
+ </select>
+
+氏名：
+ <select name="氏名：">
+  @for(u <- memberList){
+ <option value=@u.Member_ID>@u.Member_name</option>
+ }
+ </select>
+
+<br><br><br>
+ <input type="submit" value="登録" style="background-color:blue;">
+</form>
+ <input type="reset" value="クリア" style="background-color:blue;">
+ <form action="@routes.Authentication.main()" style="display:inline" method="get" >
+ <input type="submit" value="マイページ" style="background-color:blue;">
+ </form>
+    </body>
+
+
+</html>
