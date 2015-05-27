@@ -36,7 +36,7 @@ public class Authentication extends Controller {
 
 
 	//よくわからない
-	public static List<ThanksCard> thanks = ThanksCard.find.all();
+
     public static Form<Login> loginForm = Form.form(Login.class);
 
     public static Result index() {
@@ -57,7 +57,7 @@ public class Authentication extends Controller {
             session("login", login.username);
 
             //System.out.println("ようこそ " + login.username + " さん!!");
-            return ok(main.render(thanks));
+            return ok(main.render());
         }
 
     }

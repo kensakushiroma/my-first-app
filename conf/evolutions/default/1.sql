@@ -45,20 +45,17 @@ create table read (
 create table thanks_card (
   thanks_card_id            integer not null,
   card_maker_id             integer,
+  maker_post                varchar(255),
+  maker_name                varchar(255),
   transmission_date         date,
   help_date                 date,
   helpcategory_id           integer,
   help                      varchar(255),
   thanks                    varchar(255),
   address_id                integer,
+  address_post              varchar(255),
+  address_name              varchar(255),
   constraint pk_thanks_card primary key (thanks_card_id))
-;
-
-create table user (
-  id                        bigint not null,
-  name                      varchar(255),
-  password                  varchar(255),
-  constraint pk_user primary key (id))
 ;
 
 create sequence authority_seq;
@@ -74,8 +71,6 @@ create sequence post_seq;
 create sequence read_seq;
 
 create sequence thanks_card_seq;
-
-create sequence user_seq;
 
 
 
@@ -98,8 +93,6 @@ drop table if exists read;
 
 drop table if exists thanks_card;
 
-drop table if exists user;
-
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists authority_seq;
@@ -115,6 +108,4 @@ drop sequence if exists post_seq;
 drop sequence if exists read_seq;
 
 drop sequence if exists thanks_card_seq;
-
-drop sequence if exists user_seq;
 
