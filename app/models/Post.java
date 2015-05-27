@@ -8,7 +8,11 @@ import javax.persistence.Id;
 public class Post extends Model {
 
 	@Id
-	public Integer Post_ID;
-	public String Post_name;
+	public Integer post_id;
+	public String post_name;
+
+    public static Finder<Long, Post> find = new Finder<Long,Post>(
+            Long.class, Post.class
+        );
 
 }

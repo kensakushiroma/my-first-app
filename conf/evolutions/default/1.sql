@@ -10,9 +10,9 @@ create table authority (
 ;
 
 create table help_category (
-  help_category_id          integer not null,
-  help_category             varchar(255),
-  constraint pk_help_category primary key (help_category_id))
+  help_id                   integer not null,
+  help_name                 varchar(255),
+  constraint pk_help_category primary key (help_id))
 ;
 
 create table member (
@@ -43,19 +43,19 @@ create table read (
 ;
 
 create table thanks_card (
-  thanks_card_id            integer not null,
-  card_maker_id             integer,
+  thankscard_id             integer not null,
+  cardmaker_id              integer,
   maker_post                varchar(255),
   maker_name                varchar(255),
-  transmission_date         date,
-  help_date                 date,
+  transmission_date         timestamp,
+  help_date                 timestamp,
   helpcategory_id           integer,
   help                      varchar(255),
   thanks                    varchar(255),
   address_id                integer,
   address_post              varchar(255),
   address_name              varchar(255),
-  constraint pk_thanks_card primary key (thanks_card_id))
+  constraint pk_thanks_card primary key (thankscard_id))
 ;
 
 create sequence authority_seq;
