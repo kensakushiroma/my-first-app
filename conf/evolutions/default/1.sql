@@ -16,8 +16,8 @@ create table help_category (
 ;
 
 create table member (
-  member_id                 bigint not null,
-  post_id                   integer,
+  member_id                 integer not null,
+  post_post_id              integer,
   member_name               varchar(255),
   login_password            varchar(255),
   authority_id              integer,
@@ -44,17 +44,14 @@ create table read (
 
 create table thanks_card (
   thankscard_id             integer not null,
-  cardmaker_id              integer,
-  maker_post                varchar(255),
-  maker_name                varchar(255),
+  member_member_id          integer,
+  post_post_id              integer,
   transmission_date         timestamp,
   help_date                 timestamp,
-  helpcategory_id           integer,
-  help                      varchar(255),
+  helpcategory_id_help_id   integer,
   thanks                    varchar(255),
-  address_id                integer,
-  address_post              varchar(255),
-  address_name              varchar(255),
+  address_post_post_id      integer,
+  address_member_member_id  integer,
   constraint pk_thanks_card primary key (thankscard_id))
 ;
 
@@ -72,6 +69,18 @@ create sequence read_seq;
 
 create sequence thanks_card_seq;
 
+alter table member add constraint fk_member_post_1 foreign key (post_post_id) references post (post_id) on delete restrict on update restrict;
+create index ix_member_post_1 on member (post_post_id);
+alter table thanks_card add constraint fk_thanks_card_member_2 foreign key (member_member_id) references member (member_id) on delete restrict on update restrict;
+create index ix_thanks_card_member_2 on thanks_card (member_member_id);
+alter table thanks_card add constraint fk_thanks_card_post_3 foreign key (post_post_id) references post (post_id) on delete restrict on update restrict;
+create index ix_thanks_card_post_3 on thanks_card (post_post_id);
+alter table thanks_card add constraint fk_thanks_card_helpcategory_id_4 foreign key (helpcategory_id_help_id) references help_category (help_id) on delete restrict on update restrict;
+create index ix_thanks_card_helpcategory_id_4 on thanks_card (helpcategory_id_help_id);
+alter table thanks_card add constraint fk_thanks_card_address_post_5 foreign key (address_post_post_id) references post (post_id) on delete restrict on update restrict;
+create index ix_thanks_card_address_post_5 on thanks_card (address_post_post_id);
+alter table thanks_card add constraint fk_thanks_card_address_member_6 foreign key (address_member_member_id) references member (member_id) on delete restrict on update restrict;
+create index ix_thanks_card_address_member_6 on thanks_card (address_member_member_id);
 
 
 

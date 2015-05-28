@@ -1,6 +1,7 @@
 package controllers;
 
 import play.*;
+
 import models.Post;
 import play.mvc.*;
 import play.data.Form;
@@ -24,6 +25,12 @@ import play.mvc.Result;
         public static Result addThanks() {
 
         	ThanksCard thanks = Form.form(ThanksCard.class).bindFromRequest().get();
+        	//Integer id = Integer.parseInt("post_post_id");
+        	//Integer id = params.get("id", ThanksCard.class);
+        	//thanks.post=id;
+        	//ThanksCard help = thanks.get();
+        	//ThanksCard name = ThanksCard.findById(help.id.toString());
+
         	thanks.save();
         	return redirect(routes.Application.index());
         }

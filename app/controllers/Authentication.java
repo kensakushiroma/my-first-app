@@ -15,22 +15,22 @@ public class Authentication extends Controller {
 
 	//ログイン認証
 	public static class Login {
-        public String username;
+        public Integer userid;
         public String password;
 
 
         public String validate() {
-            if (authenticate(username, password)) {
+            if (authenticate(userid, password)) {
                 return null;
             }
-            return "Invalid username and password";
+            return "Invalid userid and password";
         }
 
         //ユーザとパスワードの比較
-        private Boolean authenticate(String username, String password) {
+        private Boolean authenticate(Integer userid, String password) {
 
             //return (username.equals("gongo") && password.equals("pizza"));
-        	return Member.authenticate(username, password);
+        	return Member.authenticate(userid, password);
 
         }
     }
@@ -55,7 +55,7 @@ public class Authentication extends Controller {
             return badRequest(index.render(form));
         } else {
             Login login = form.get();
-            session("login", login.username);
+        //    session("login", login.userid);
 
             //System.out.println("ようこそ " + login.username + " さん!!");
             return ok(main.render());

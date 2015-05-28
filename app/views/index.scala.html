@@ -1,38 +1,35 @@
 @(postList: List[Post])(memberList: List[Member])(helpList: List[HelpCategory])
-
-
 <html>
     <head>
         <title>感謝カード入力画面</title>
            </head>
     <body>
-<form method="get" action="@routes.Authentication.logout()">
+<for"app/models/Post.java"m method="get" action="@routes.Authentication.logout()">
 <input type="submit" value="ログアウト" style="background-color:blue;">
 </form>
 
+
+<form action="@routes.Application.addThanks()" style="display:inline" method="post">
  <p>■感謝する人</p>
  部署：
- <select name="部署：">
- @for(u <- postList){
- <option value=@u.post_id>@u.post_name</option>
+
+ <select name="post_id">
+ @for(i <- postList){
+ <option value=@i.post_id>@i.post_name</option>
  }
  </select>
 
 
 氏名：
- <select name="氏名：">
+ <select name="member_member_id" >
   @for(u <- memberList){
- <option value=@u.Member_ID>@u.Member_name</option>
+ <option value=@u.getPost.post_id>@u.member_name</option>
  }
  </select>
 
-
-
-
-
 <!-- テキストボックスに表示する場合 -->
 <br><br>
-<form action="@routes.Application.addThanks()" style="display:inline" method="post">
+
 日付：<input name="help_date">
 
 <br><br>
@@ -53,17 +50,17 @@
 
  <p>■感謝される人</p>
 
-部署：
+ 部署：
  <select name="部署：">
- @for(u <- postList){
- <option value=@u.post_id>@u.post_name</option>
+ @for(i <- postList){
+ <option value=@i.post_id>@i.post_name</option>
  }
  </select>
 
 氏名：
- <select name="氏名：">
+ <select name="氏名：" >
   @for(u <- memberList){
- <option value=@u.Member_ID>@u.Member_name</option>
+ <option value=@u.getPost.post_id>@u.member_name</option>
  }
  </select>
 

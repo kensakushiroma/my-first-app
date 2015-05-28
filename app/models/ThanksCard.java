@@ -9,16 +9,32 @@ public class ThanksCard extends Model {
 
 	@Id
 	public Integer thankscard_id;
-	public Integer cardmaker_id;
-	public String maker_post;
-	public String maker_name;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+
+	public Member member;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Post post;
+
 	public java.util.Date transmission_date;
 	public java.util.Date help_date;
-	public Integer helpcategory_id;
-	public String help;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public HelpCategory helpcategory_id;
+
 	public String thanks;
-	public Integer address_id;
-	public String address_post;
-	public String address_name;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Post address_post;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	public Member address_member;
+
+
+
+    public static Finder<Long, ThanksCard> find = new Finder<Long,ThanksCard>(
+            Long.class, ThanksCard.class
+        );
 
 }
